@@ -140,17 +140,19 @@ class BundledProgram:
                 )
             )
 
-        if self.executorch_program:
-            program_bytes = self.executorch_program.buffer
-        else:
-            assert self._pte_file_path is not None
-            with open(self._pte_file_path, "rb") as f:
-                program_bytes = f.read()
+        # Assumption: Since we don't want to reserialize the .pte,
+        # the code below should effectively be removed
+
+        # if self.executorch_program:
+        #     program_bytes = self.executorch_program.buffer
+        # else:
+        #     assert self._pte_file_path is not None
+        #     with open(self._pte_file_path, "rb") as f:
+        #         program_bytes = f.read()
 
         self._bundled_program_in_schema = bp_schema.BundledProgram(
             version=BUNDLED_PROGRAM_SCHEMA_VERSION,
             method_test_suites=bundled_method_test_suites,
-            program=program_bytes,
         )
         return self._bundled_program_in_schema
 

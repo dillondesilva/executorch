@@ -96,4 +96,4 @@ class BundledProgram:
     method_test_suites: List[BundledMethodTestSuite]
 
     # The binary data of a serialized ExecuTorchProgram.
-    program: bytes
+    # program: bytes
